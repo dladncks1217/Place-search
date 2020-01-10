@@ -4,7 +4,8 @@
   "description": "장소검색서비스",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
   },
   "author": "임우찬",
   "license": "ISC",
@@ -13,12 +14,11 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "mongoose": "^5.8.3",
     "morgan": "^1.9.1",
-    "nunjucks": "^3.2.0",
-    "pug": "^2.0.4",
     "request": "^2.88.0"
   },
   "devDependencies": {
