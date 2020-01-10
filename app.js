@@ -9,10 +9,10 @@ require('dotenv').config();
 const indexRouter = require('./routes/index');
 const connect = require('./schemas');
 const app = express();
-connect();
+//connect();
 
 app.set('views',path.join(__dirname,'views'));
-app.set('view engine','pug');
+app.set('view engine','ejs');
 app.set('port',process.env.PORT||8015);
 
 app.use(morgan('dev'));
