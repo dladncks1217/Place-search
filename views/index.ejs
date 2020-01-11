@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="main.css">
+	<title>Documentss</title>
 </head>
+
 <body>
-    <div id="map" style="width:500px;height:400px;"></div> <br>	
+	<input type="text" name="search" id="search">
+	<input type="button" id="searchbtn" value="검색">
 
 
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5c1322ff92a78cb7ac8ca9fde0a19ee3"></script>
-	<script>
-		const container = document.getElementById('map');
-		let options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
-		let map = new kakao.maps.Map(container, options);
-	</script>
+	<div id="map"></div> <br>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5c1322ff92a78cb7ac8ca9fde0a19ee3&libraries=services"></script>
+	<script type="text/javascript"
+		src="/map.js"></script>
 </body>
+
 </html>
