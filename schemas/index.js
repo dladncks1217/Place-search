@@ -30,4 +30,5 @@ module.exports=()=>{
 
     require('./favorite'); // 몽고디비와 몽구스 스키마의 연결
     require('./history');
+    require('./user');
 }
