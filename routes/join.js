@@ -40,4 +40,11 @@ router.post('join',isNotLoggedIn, async (req,res,next)=>{
     }
 });
 
+//logout
+router.get('/logout',isLoggedIn,(req,res)=>{
+    req.logout();
+    req.session.destroy(); // req.user
+    res.redirect('/');
+});
+
 module.exports = router;
