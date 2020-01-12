@@ -12,3 +12,11 @@ function enterkey(e) {
         document.getElementById('search').value="";
     }
 }
+document.getElementById('login').addEventListener('click',(e)=>{
+    e.preventDefault();
+    location.href = '/login';
+});
+document.getElementById('join').addEventListener('click',(e)=>{
+    e.preventDefault();
+    location.href = '/join';
+});
