@@ -4,9 +4,17 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const passportlocal = require('passport-local');
+const passportConfig = require('./passport');
+
 require('dotenv').config();
 
 const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/login');
+const joinRouter = require('./routes/join');
+
 const connect = require('./schemas');
 const app = express();
 //connect();
@@ -30,7 +38,15 @@ app.use(session({
     },
 }));
 app.use(flash());
+
+//passport
+app.use(passport.initialize());
+app.use(passport.session());
+passportConfig(passport);
+
 app.use('/',indexRouter);
+app.use('/login',loginRouter);
+app.use('/join',joinRouter);
 
 app.use((req,res,next)=>{
     const err = new Error('Not Found');
