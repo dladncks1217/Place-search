@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
-const favoriteSchema = ({
+const favoriteSchema = new Schema({
     placeId:{
         type:String,
         unique:true,
