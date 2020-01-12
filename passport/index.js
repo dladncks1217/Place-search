@@ -1,5 +1,5 @@
-const local = require('passport-local');
-const {User} = require('./schemas');
+const local = require('../passport/localStrategy');
+const {User} = require('../schemas');
 
 module.exports = (passport) =>{
     passport.serializeUser((user,done)=>{
