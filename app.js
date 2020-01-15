@@ -15,9 +15,9 @@ const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const joinRouter = require('./routes/join');
 
-const connect = require('./schemas');
+const {sequelize} = require('./models');
 const app = express();
-//connect(); 
+sequelize.sync();
 
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
