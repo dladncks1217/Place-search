@@ -7,9 +7,15 @@ module.exports = (passport) =>{
     });
 
     passport.deserializeUser((email,done)=>{
-        User.findOne({email})
-        .then(user=>done(null,user))
-        .catch(err=> done(err));
+        User.findOne({
+            where:{email},
+            include:[{
+                model:User,
+                attributes:['email','nick'],
+            }],
+        })
+        .then(user => done(null,user))
+        .catch(err => done(err));
     });
     local(passport);
 };
