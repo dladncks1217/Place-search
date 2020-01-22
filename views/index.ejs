@@ -10,8 +10,12 @@
 </head>
 
 <body>
-	<button id = "login">로그인</button>
-	<button id = "join">회원가입</button>
+	<% if(isLoggedin){ %>
+	<p><%= user %>님 안녕하세요!</p>
+	<% }else{ %>
+		<button id = "login">로그인</button>
+		<button id = "join">회원가입</button>
+	<% } %>
 	<input type="text" name="search" id="search"onkeyup="enterkey();">
 	<input type="button" id="searchbtn" value="검색" > &nbsp
 	<p id="search">검색결과 : <span id="srchresult"></span> </p>
