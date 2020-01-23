@@ -4,7 +4,7 @@ module.exports = (sequelize,DataTypes)=>(
             type:DataTypes.STRING(40),
             allowNull:false,
             unique:true,
-            primaryKey:true,
+
         },
         password:{
             type:DataTypes.STRING(100),
