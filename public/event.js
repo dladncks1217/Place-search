@@ -12,11 +12,21 @@ function enterkey(e) {
         document.getElementById('search').value="";
     }
 }
-document.getElementById('login').addEventListener('click',(e)=>{
+if(document.getElementById('login')){
+    document.getElementById('login').addEventListener('click',(e)=>{
+        e.preventDefault();
+        location.href = '/login';
+    });
+}
+if(document.getElementById('join')){
+    document.getElementById('join').addEventListener('click',(e)=>{
+        e.preventDefault();
+        location.href = '/join';
+    });
+}
+if(document.getElementById('logout')){
+    document.getElementById('logout').addEventListener('click',(e)=>{
     e.preventDefault();
-    location.href = '/login';
+    location.href='/login/logout';
 });
-document.getElementById('join').addEventListener('click',(e)=>{
-    e.preventDefault();
-    location.href = '/join';
-});
+}
