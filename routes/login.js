@@ -19,10 +19,12 @@ router.post('/login',isNotLoggedIn,(req,res,next)=>{
         }
         return req.login(user,(loginError)=>{
             if(loginError){
+                console.log(user);
+                console.log('여기서에러났어요');
                 console.error(loginError);
                 return next(loginError);
             }
-            res.redirect('/');
+            return res.redirect('/');
         });
     })(req,res,next);
 });
