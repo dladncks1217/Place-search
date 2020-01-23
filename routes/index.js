@@ -5,16 +5,6 @@ const {User} = require('../models');
 
 require('dotenv').config();
 
-/*
-const isLoggedin = (req,res,next)=>{
-    if (req.isAuthenticated()) {
-        req.isLogged = true
-        return next();
-     }
-     res.redirect('/');
-}
-*/
-
 router.get('/',async(req,res,next)=>{
     if(req.isAuthenticated()){
         const user = await User.findOne({where:{email: req.user.email}});
