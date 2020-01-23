@@ -4,9 +4,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
-const bcrypt = require('bcryptjs');
 const passport = require('passport');
-const passportlocal = require('passport-local');
 const passportConfig = require('./passport');
 
 require('dotenv').config();
@@ -17,7 +15,9 @@ const joinRouter = require('./routes/join');
 
 const {sequelize} = require('./models');
 const app = express();
+
 sequelize.sync();
+passportConfig(passport);
 
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use(session({
+app.use(session({   
     resave:false,
     saveUninitialized:false,
     secret:process.env.COOKIE_SECRET,
@@ -42,7 +42,7 @@ app.use(flash());
 //passport
 app.use(passport.initialize());
 app.use(passport.session());
-passportConfig(passport);
+
 
 app.use('/',indexRouter);
 app.use('/login',loginRouter);
