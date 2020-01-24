@@ -12,6 +12,7 @@ require('dotenv').config();
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const joinRouter = require('./routes/join');
+const historyRouter = require('./routes/history');
 
 const {sequelize} = require('./models');
 const app = express();
@@ -47,6 +48,7 @@ app.use(passport.session());
 app.use('/',indexRouter);
 app.use('/login',loginRouter);
 app.use('/join',joinRouter);
+app.use('/history',historyRouter);
 
 app.use((req,res,next)=>{
     const err = new Error('Not Found');
