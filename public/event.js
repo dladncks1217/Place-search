@@ -4,12 +4,37 @@ document.getElementById('searchbtn').addEventListener('click', (e) => {
     searchfeature();
     document.getElementById('srchresult').textContent = document.getElementById('search').value;
     document.getElementById('search').value="";
+
+    let xhr = new XMLHttpRequest();
+    xhr.onload = ()=>{
+        if(xhr.status === 200){
+            location.reload();
+        }else{
+            console.error(xhr.responseText);
+        }
+    };
+    xhr.open('POST','/history');
+    xhr.setRequestHeader('Content-Type','application/json');
+    xhr.send(JSON.stringify({history:document.getElementById('srchresult').textContent}));
 });
+
 function enterkey(e) {
     if (window.event.keyCode == 13) {
         searchfeature();
         document.getElementById('srchresult').textContent = document.getElementById('search').value;
         document.getElementById('search').value="";
+
+        let xhr = new XMLHttpRequest();
+        xhr.onload = ()=>{
+            if(xhr.status === 200){
+                location.reload();
+            }else{
+                console.error(xhr.responseText);
+            }
+        };
+        xhr.open('POST','/history');
+        xhr.setRequestHeader('Content-Type','application/json');
+        xhr.send(JSON.stringify({history:document.getElementById('srchresult').textContent}));
     }
 }
 if(document.getElementById('login')){
