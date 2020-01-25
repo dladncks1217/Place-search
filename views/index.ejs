@@ -11,7 +11,7 @@
 
 <body>
 	<% if(isLoggedIn){ %>
-	<p><%= user %>님 안녕하세요!</p>
+	<p><span id="nickname"><%= user %></span>님 안녕하세요!</p>
 	<button id = "logout">로그아웃</button>
 	<% }else{ %>
 		<button id = "login">로그인</button>
