@@ -26,7 +26,11 @@ document.getElementById('searchbtn').addEventListener('click', (e) => {
     };
     xhr.open('POST','/history');
     xhr.setRequestHeader('Content-Type','application/json');
-    xhr.send(JSON.stringify({history:document.getElementById('srchresult').textContent, time:timecheck()}));
+    xhr.send(JSON.stringify({
+        history:document.getElementById('srchresult').textContent, 
+        time:timecheck(),
+        nick:document.getElementById('nickname').textContent,
+    }));
 });
 
 function enterkey(e) {
@@ -45,7 +49,11 @@ function enterkey(e) {
         };
         xhr.open('POST','/history');
         xhr.setRequestHeader('Content-Type','application/json');
-        xhr.send(JSON.stringify({history:document.getElementById('srchresult').textContent, time:timecheck()}));
+        xhr.send(JSON.stringify({
+            history:document.getElementById('srchresult').textContent, 
+            time:timecheck(),
+            nick:document.getElementById('nickname').textContent,
+        }));
     }
 }
 if(document.getElementById('login')){
