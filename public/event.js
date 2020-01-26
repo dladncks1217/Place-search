@@ -11,33 +11,12 @@ function timecheck(){
 document.querySelector('#search').focus();
 document.getElementById('searchbtn').addEventListener('click', (e) => {
     e.preventDefault();
-    searchfeature();
-    document.getElementById('srchresult').textContent = document.getElementById('search').value;
-    document.getElementById('search').value="";
+    if(document.getElementById('nickname')){
 
-
-    let xhr = new XMLHttpRequest();
-    xhr.onload = ()=>{
-        if(xhr.status === 200){
-            location.reload();
-        }else{
-            console.error(xhr.responseText);
-        }
-    };
-    xhr.open('POST','/history');
-    xhr.setRequestHeader('Content-Type','application/json');
-    xhr.send(JSON.stringify({
-        history:document.getElementById('srchresult').textContent, 
-        time:timecheck(),
-        nick:document.getElementById('nickname').textContent,
-    }));
-});
-
-function enterkey(e) {
-    if (window.event.keyCode == 13) {
         searchfeature();
         document.getElementById('srchresult').textContent = document.getElementById('search').value;
         document.getElementById('search').value="";
+
 
         let xhr = new XMLHttpRequest();
         xhr.onload = ()=>{
@@ -54,8 +33,43 @@ function enterkey(e) {
             time:timecheck(),
             nick:document.getElementById('nickname').textContent,
         }));
+    }else{
+        NotLoginsearchfeature();
+        document.getElementById('srchresult').textContent = document.getElementById('search').value;
+        document.getElementById('search').value="";
     }
-}
+});
+
+function enterkey(e) {
+    if (window.event.keyCode == 13) {
+         if(document.getElementById('nickname')){
+            searchfeature();
+            document.getElementById('srchresult').textContent = document.getElementById('search').value;
+            document.getElementById('search').value="";
+    
+            let xhr = new XMLHttpRequest();
+            xhr.onload = ()=>{
+                if(xhr.status === 200){
+                    location.reload();
+                }else{
+                    console.error(xhr.responseText);
+                }
+            };
+            xhr.open('POST','/history');
+            xhr.setRequestHeader('Content-Type','application/json');
+            xhr.send(JSON.stringify({
+                history:document.getElementById('srchresult').textContent, 
+                time:timecheck(),
+                nick:document.getElementById('nickname').textContent,
+            }));
+        }else{
+            NotLoginsearchfeature();
+            document.getElementById('srchresult').textContent = document.getElementById('search').value;
+            document.getElementById('search').value="";
+        }
+    }
+};
+
 if(document.getElementById('login')){
     document.getElementById('login').addEventListener('click',(e)=>{
         e.preventDefault();
@@ -72,5 +86,5 @@ if(document.getElementById('logout')){
     document.getElementById('logout').addEventListener('click',(e)=>{
     e.preventDefault();
     location.href='/login/logout';
-});
+    });
 }
