@@ -12,7 +12,7 @@ router.post('/',async (req,res,next)=>{
                 userId:user.dataValues.id,
             });
         });
-        res.redirect('/');
+
     }catch(err){
         console.error(err);
         next(err);
