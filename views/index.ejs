@@ -19,7 +19,11 @@
 	<% } %>
 	<input type="text" name="search" id="search"onkeyup="enterkey();">
 	<input type="button" id="searchbtn" value="검색" > &nbsp
-	<p id="search">검색결과 : <span id="srchresult"></span> </p>
+	<% if(isLoggedIn) { %>
+	<p id="search">검색결과 : <span id="srchresult"><%= searchnow %></span> </p>
+	<% } else { %>
+		<p id="search">검색결과 : <span id="srchresult"></span> </p>
+	<% } %>
 	<br/><br/>
 
 	<div id="map"></div> <br>
