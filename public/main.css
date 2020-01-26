@@ -8,6 +8,6 @@
     margin-right:10px;
     display: inline;
 }
-#history{
+#history, #placehistory{
     display: inline-block;
 }
