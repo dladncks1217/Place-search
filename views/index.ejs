@@ -25,11 +25,11 @@
 	<div id="map"></div> <br>
 	<% if(isLoggedIn) { %>
 		<p id="history">검색기록</p>
-		<div>
-			
-
-
-		</div>
+		<% if(count>0){ %>
+			<% for(let i = count;i>0;i--){ %>
+				<p><%= history.rows[i-1].dataValues.query %></p>
+			<% } %>
+		 <% } %>
 	<% } %>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5c1322ff92a78cb7ac8ca9fde0a19ee3&libraries=services"></script>
