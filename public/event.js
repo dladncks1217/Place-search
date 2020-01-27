@@ -88,3 +88,57 @@ if(document.getElementById('logout')){
     location.href='/login/logout';
     });
 }
+
+/*if(document.getElementById('deletebtn')){
+    document.getElementById('deletebtn').addEventListener('click',(e)=>{
+        e.preventDefault();
+
+        let xhr = new XMLHttpRequest();
+        xhr.onload = ()=>{
+            if(xhr.status === 200){
+                location.reload();
+            }else{
+                console.error(xhr.responseText);
+            }
+        };
+
+        xhr.open('DELETE','/history');
+        xhr.setRequestHeader('Content-Type','application/json');
+        xhr.send(JSON.stringify({delete:document.previousSibling.textContent}));
+    });
+}
+*/
+
+if(document.getElementById('deleteall')){
+    document.getElementById('deleteall').addEventListener('click',(e)=>{
+        e.preventDefault();
+        const deleteask = confirm('모든 검색결과를 삭제하시겠습니까?');
+
+        if(deleteask){
+            let xhr = new XMLHttpRequest();
+            xhr.onload = ()=>{
+                if(xhr.status === 200){
+                    location.reload();
+                }else{
+                    console.error(xhr.responseText);
+                }
+            };
+            xhr.open('DELETE','/history/all');
+            xhr.setRequestHeader('Content-Type','application/json');
+            xhr.send(JSON.stringify({
+                nick:document.getElementById('nickname').textContent,
+            }));
+            location.href="/";
+        }else{
+            return;
+        }
+        
+    });
+}
+
+if(document.getElementById('errorbtn')){
+    document.getElementById('errorbtn').addEventListener('click',(e)=>{
+        e.preventDefault();
+        location.href = '/';
+    })
+}
