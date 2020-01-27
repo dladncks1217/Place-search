@@ -39,4 +39,8 @@ router.get('/',async(req,res,next)=>{
     }
 });
 
+router.get('/error',(req,res,next)=>{
+    res.render('error');
+})
+
 module.exports = router;
