@@ -8,7 +8,7 @@ router.get('/',async(req,res,next)=>{
     try{
         if(req.isAuthenticated()){
             const user = await User.findOne({where:{email: req.user.email}});
-            await History.findAndCountAll({where:{userId:user.id}})
+            History.findAndCountAll({where:{userId:user.id}})
             .then((history)=>{
                 if(history.count>0){
                     res.render('index',{

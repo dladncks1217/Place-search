@@ -89,26 +89,6 @@ if(document.getElementById('logout')){
     });
 }
 
-/*if(document.getElementById('deletebtn')){
-    document.getElementById('deletebtn').addEventListener('click',(e)=>{
-        e.preventDefault();
-
-        let xhr = new XMLHttpRequest();
-        xhr.onload = ()=>{
-            if(xhr.status === 200){
-                location.reload();
-            }else{
-                console.error(xhr.responseText);
-            }
-        };
-
-        xhr.open('DELETE','/history');
-        xhr.setRequestHeader('Content-Type','application/json');
-        xhr.send(JSON.stringify({delete:document.previousSibling.textContent}));
-    });
-}
-*/
-
 if(document.getElementById('deleteall')){
     document.getElementById('deleteall').addEventListener('click',(e)=>{
         e.preventDefault();
@@ -142,3 +122,10 @@ if(document.getElementById('errorbtn')){
         location.href = '/';
     })
 }
+
+if(document.getElementById('mypage')){
+    document.getElementById('mypage').addEventListener('click',(e)=>{
+        e.preventDefault();
+        location.href="/mypage";     
+    })
+};
