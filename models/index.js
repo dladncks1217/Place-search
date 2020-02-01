@@ -18,4 +18,7 @@ db.Favorite = require('./favorite')(sequelize,Sequelize);
 db.User.hasMany(db.History);
 db.History.belongsTo(db.User);
 
+db.User.hasMany(db.Favorite);
+db.Favorite.belongsTo(db.User);
+
 module.exports = db;

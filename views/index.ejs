@@ -18,12 +18,19 @@
 		<button id = "login">로그인</button>
 		<button id = "join">회원가입</button>
 	<% } %>
+
 	<input type="text" name="search" id="search"onkeyup="enterkey();">
 	<input type="button" id="searchbtn" value="검색" > &nbsp
+
 	<% if(isLoggedIn) { %>
 	<p id="search">검색결과 : <span id="srchresult"><%= searchnow %></span> </p>
+	<button id="favoritebtn">☆</button>
+	<p id="search">
+		<p id="placehistory"></p>
+	</p>
 	<% } else { %>
 		<p id="search">검색결과 : <span id="srchresult"></span> </p>
+		<br>
 	<% } %>
 	<br/><br/>
 
