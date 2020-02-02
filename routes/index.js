@@ -1,34 +1,46 @@
 const express = require('express');
 const router = express.Router();
-const {User,History} = require('../models');
+const {User,History,Favorite} = require('../models');
 
 require('dotenv').config();
 
 router.get('/',async(req,res,next)=>{
     try{
-        if(req.isAuthenticated()){
-            const user = await User.findOne({where:{email: req.user.email}});
-            History.findAndCountAll({where:{userId:user.id}})
-            .then((history)=>{
-                if(history.count>0){
-                    res.render('index',{
-                        isLoggedIn:req.isAuthenticated(),
-                        user:user.nick,
-                        history,
-                        count:history.count,
-                        searchnow:history.rows[history.count-1].dataValues.query,
-                    });
-                }else{
-                    res.render('index',{
-                        isLoggedIn:req.isAuthenticated(),
-                        user:user.nick,
-                        history,
-                        count:history.count,
-                        searchnow:'',
-                    });
-                }
-            });
-        }else{
+        if(req.isAuthenticated()){ // loggedIn
+            // Histories
+            let histories = await History.findAndCountAll({where:{userId:req.user.id}});
+            let history_counts = {
+                historycnt:histories.count,
+                history:histories,
+                searchnow:histories.rows[histories.count-1].dataValues.query,
+            };
+            // Favorites
+            let favorite = await Favorite.findAndCountAll({where:{userId:req.user.id}});
+            let favorite_count = {
+                favoritecnt:favorite.count,
+                favorites:favorite,
+            };
+            // Rendering
+            if(history_counts.historycnt>0){
+                res.render('index',{
+                    isLoggedIn:req.isAuthenticated(),
+                    user: req.user.nick,
+                    historylist:history_counts.history,
+                    historycnt:history_counts.historycnt,
+                    searchnow:history_counts.searchnow,
+                    favoritecnt:favorite_count.favoritecnt,
+                    favoritelist:favorite_count.favorites,
+                });
+            }else{
+                res.render('index',{
+                    isLoggedIn:req.isAuthenticated(),
+                    user:user.nick,
+                    historylist:history_counts.history,
+                    historycnt:history_counts.historycnt,
+                    searchnow:'',
+                });
+            }
+        }else{ // NotLoggedIn
             res.render('index',{
                 isLoggedIn:req.isAuthenticated(),
             });
