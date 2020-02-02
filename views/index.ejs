@@ -37,9 +37,9 @@
 	<div id="map"></div> <br>
 	<% if(isLoggedIn) { %>
 		<strong id="history">검색기록 : </strong>
-		<% if(count>0){ %>
-			<% for(let i = count;i>0;i--){ %>
-				<p id="placehistory"><%= history.rows[i-1].dataValues.query %></p>&nbsp
+		<% if(historycnt>0){ %>
+			<% for(let i = historycnt;i>0;i--){ %>
+				<p id="placehistory"><%= historylist.rows[i-1].dataValues.query %></p>&nbsp
 			<% } %>
 		 <% } %>
 		 <button id="deleteall">검색기록 전체 삭제</button>
