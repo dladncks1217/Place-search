@@ -26,7 +26,11 @@
 	<p id="search">검색결과 : <span id="srchresult"><%= searchnow %></span> </p>
 	<button id="favoritebtn">☆</button>
 	<p id="search">
-		<p id="placehistory"></p>
+		<% if(favoritecnt>0) { %>
+			<% for(let i = favoritecnt; i>0 ; i--) { %>
+				<p class="favorites"><%= favorites.rows[i-1].dataValues.placeName %></p>
+			<% } %>	
+		<% } %>	
 	</p>
 	<% } else { %>
 		<p id="search">검색결과 : <span id="srchresult"></span> </p>
