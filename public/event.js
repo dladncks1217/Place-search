@@ -142,10 +142,12 @@ if(document.getElementById('mypage')){
 // 즐겨찾기 추가/제거 기능
 if(document.getElementById('favoritebtn')){
     document.getElementById('favoritebtn').addEventListener('click',(e)=>{
-        preventDefault();
+        e.preventDefault();
         // 추가
-        if(document.getElementById('favoritebtn').value == "☆"){
-            document.getElementById('favorite').value = "★";
+        
+        if(document.getElementById('favoritebtn').textContent == "☆"){
+            console.log('여기들어옴');
+            document.getElementById('favoritebtn').textContent = "★";
 
             let xhr = new XMLHttpRequest();
             xhr.onload = ()=>{
@@ -155,15 +157,15 @@ if(document.getElementById('favoritebtn')){
                     console.error(xhr.responseText);
                 }
             };
-            xhr.open('POST','/favorite/add');
+            xhr.open('PUT','/favorite/add');
             xhr.setRequestHeader('Content-Type','application/json');
             xhr.send(JSON.stringify({
-                favorite:document.getElementById('srchresult').value
+                favorite:document.getElementById('srchresult').textContent
             }));
 
         // 제거
-        }else if(document.getElementById('favoritebtn').value == "★"){ 
-            document.getElementById('favorite').value = "☆";
+        }else if(document.getElementById('favoritebtn').textContent == "★"){ 
+            document.getElementById('favoritebtn').textContent = "☆";
 
             let xhr = new XMLHttpRequest();
             xhr.onload = ()=>{
@@ -176,7 +178,7 @@ if(document.getElementById('favoritebtn')){
             xhr.open('POST','/favorite/remove');
             xhr.setRequestHeader('Content-Type','application/json');
             xhr.send(JSON.stringify({
-                favorite:document.getElementById('srchresult').value
+                favorite:document.getElementById('srchresult').textContent
             }));
         }
 

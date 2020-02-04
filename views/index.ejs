@@ -24,7 +24,7 @@
 
 	<% if(isLoggedIn) { %>
 	<p id="search">검색결과 : <span id="srchresult"><%= searchnow %></span> </p>
-	<button id="favoritebtn">☆</button>
+	<button id="favoritebtn"><%= starcheck %></button>
 	<p id="search">
 		<% if(favoritecnt>0) { %>
 			<% for(let i = favoritecnt; i>0 ; i--) { %>
