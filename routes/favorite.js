@@ -3,13 +3,12 @@ const router = express.Router();
 const {Favorite} = require('../models');
 
 
-router.post('/add', (req,res,next)=>{
+router.put('/add', (req,res,next)=>{
     try{
         Favorite.create({
             userId:req.user.id,
             placeName:req.body.favorite,
         })
-        return res.redirect('/');
     }catch(err){
         console.error(err);
         next(err);
@@ -19,7 +18,7 @@ router.post('/add', (req,res,next)=>{
 router.post('/remove', (req,res,next)=>{
     try{
         Favorite.destroy({where:{userId:req.user.id,placeName:req.body.favorite},})
-        return res.redirect('/');
+        
     }catch(err){
         console.error(err);
         next(err);

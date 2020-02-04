@@ -6,7 +6,9 @@ require('dotenv').config();
 
 router.get('/',async(req,res,next)=>{
     try{
+       
         if(req.isAuthenticated()){ // loggedIn
+            
             // Histories
             let histories = await History.findAndCountAll({where:{userId:req.user.id}});
             let history_counts = {
@@ -16,11 +18,21 @@ router.get('/',async(req,res,next)=>{
             };
             // Favorites
             let favorite = await Favorite.findAndCountAll({where:{userId:req.user.id}});
+            // 현재장소 즐겨찾기
+            let starcheck = await Favorite.findOne({where:{placeName:history_counts.searchnow}});
+            
             let favorite_count = {
                 favoritecnt:favorite.count,
                 favorites:favorite,
+                starcheck:()=>{
+                    if(!starcheck){
+                        return '☆';
+                    }else{
+                        return '★';
+                    }
+                },
             };
-            // Rendering
+            
             if(history_counts.historycnt>0){
                 res.render('index',{
                     isLoggedIn:req.isAuthenticated(),
@@ -30,6 +42,7 @@ router.get('/',async(req,res,next)=>{
                     searchnow:history_counts.searchnow,
                     favoritecnt:favorite_count.favoritecnt,
                     favoritelist:favorite_count.favorites,
+                    starcheck:favorite_count.starcheck(),
                 });
             }else{
                 res.render('index',{
@@ -38,6 +51,7 @@ router.get('/',async(req,res,next)=>{
                     historylist:history_counts.history,
                     historycnt:history_counts.historycnt,
                     searchnow:'',
+                    starcheck:favorite_count.starcheck(),
                 });
             }
         }else{ // NotLoggedIn
