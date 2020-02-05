@@ -160,7 +160,8 @@ if(document.getElementById('favoritebtn')){
             xhr.open('PUT','/favorite/add');
             xhr.setRequestHeader('Content-Type','application/json');
             xhr.send(JSON.stringify({
-                favorite:document.getElementById('srchresult').textContent
+                favorite:document.getElementById('srchresult').textContent,
+                timecheck:timecheck(),
             }));
 
         // 제거

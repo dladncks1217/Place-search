@@ -8,6 +8,9 @@
     margin-right:10px;
     display: inline;
 }
-#history, #placehistory, #nickp{
+#history, #placehistory, #nickp, .favorites{
     display: inline-block;
+}
+#search{
+    height:10%;
 }

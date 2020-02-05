@@ -25,18 +25,20 @@
 	<% if(isLoggedIn) { %>
 	<p id="search">검색결과 : <span id="srchresult"><%= searchnow %></span> </p>
 	<button id="favoritebtn"><%= starcheck %></button>
-	<p id="search">
+
 		<% if(favoritecnt>0) { %>
+			<br><strong> 즐겨찾기: </strong>	
 			<% for(let i = favoritecnt; i>0 ; i--) { %>
-				<p class="favorites"><%= favorites.rows[i-1].dataValues.placeName %></p>
-			<% } %>	
+				<p class="favorites"><%= favoritelist.rows[i-1].dataValues.placeName %></p>
+			<% } %>
+			
 		<% } %>	
-	</p>
+
 	<% } else { %>
 		<p id="search">검색결과 : <span id="srchresult"></span> </p>
 		<br>
 	<% } %>
-	<br/><br/>
+	<br/>
 
 	<div id="map"></div> <br>
 	<% if(isLoggedIn) { %>
