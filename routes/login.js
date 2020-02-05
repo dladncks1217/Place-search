@@ -33,6 +33,16 @@ router.get('/findpw',isNotLoggedIn,(req,res,next)=>{
     res.render('findpw');
 });
 
+router.post('/findpw/find',isNotLoggedIn, async(req,res,next)=>{
+    const exUser = await User.findOne({where:{email:req.body.email}});
+    if(!exUser){
+        req.flash('EmailNotfound','이메일을 찾을 수 없습니다!')
+        return res.redirect('/login/findpw');
+    }else{
+        
+    }
+});
+
 router.get('/logout',isLoggedIn,(req,res)=>{
     req.logout();
     req.session.destroy();
