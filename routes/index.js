@@ -43,6 +43,7 @@ router.get('/',async(req,res,next)=>{
                     favoritecnt:favorite_count.favoritecnt,
                     favoritelist:favorite_count.favorites,
                     starcheck:favorite_count.starcheck(),
+                    kakaokey:process.env.KAKAO_JAVASCRIPTKEY,
                 });
             }else{
                 res.render('index',{
@@ -52,11 +53,13 @@ router.get('/',async(req,res,next)=>{
                     historycnt:history_counts.historycnt,
                     searchnow:'',
                     starcheck:favorite_count.starcheck(),
+                    kakaokey:process.env.KAKAO_JAVASCRIPTKEY,
                 });
             }
         }else{ // NotLoggedIn
             res.render('index',{
                 isLoggedIn:req.isAuthenticated(),
+                kakaokey:process.env.KAKAO_JAVASCRIPTKEY,
             });
         }
     }catch(err){
