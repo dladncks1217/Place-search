@@ -11,6 +11,12 @@
     <p>내 닉네임: <span id="nick"><%= nick %></span></p>
     <input type="text" id="changenick">
     <input type="button" id="changebtn" value="닉네임 변경">
+
+    <p>패스워드 변경</p>
+    <form action="/mypage/changepw" method="post">
+        <input type="password" name="newpw" >
+        <input type="submit" value="변경" >
+    </form>
     <script src = "mypage.js"></script>
 </body>
 </html>
