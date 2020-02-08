@@ -15,6 +15,7 @@ const joinRouter = require('./routes/join');
 const historyRouter = require('./routes/history');
 const mypageRouter = require('./routes/mypage');
 const favoriteRouter = require('./routes/favorite');
+const boardRouter = require('./routes/board');
 
 const {sequelize} = require('./models');
 const app = express();
@@ -53,6 +54,7 @@ app.use('/join',joinRouter);
 app.use('/history',historyRouter);
 app.use('/mypage',mypageRouter);
 app.use('/favorite',favoriteRouter);
+app.use('/board',boardRouter);
 
 app.use((req,res,next)=>{
     const err = new Error('Not Found');

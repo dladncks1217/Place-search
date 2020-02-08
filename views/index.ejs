@@ -13,7 +13,8 @@
 	<% if(isLoggedIn){ %>
 	<p id="nickp"><span id="nickname"><%= user %></span>님 안녕하세요!</p>
 	<button id="mypage">내 정보</button> <br>
-	<button id = "logout">로그아웃</button>
+	<button id ="logout">로그아웃</button>
+	<button id="board">자유게시판</button>
 	<% }else{ %>
 		<button id = "login">로그인</button>
 		<button id = "join">회원가입</button>
@@ -51,7 +52,7 @@
 		 <button id="deleteall">검색기록 전체 삭제</button>
 	<% } %>
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%= kakaokey %>"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%= kakaokey %>&libraries=services"></script>
 	<script type="text/javascript"
 		src="/map.js"></script>
 	<script src = "/event.js"></script>
