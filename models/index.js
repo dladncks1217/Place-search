@@ -14,11 +14,15 @@ db.Sequelize = Sequelize;
 db.User = require('./user')(sequelize,Sequelize);
 db.History = require('./history')(sequelize,Sequelize);
 db.Favorite = require('./favorite')(sequelize,Sequelize);
+db.Board = require('./board')(sequelize,Sequelize);
 
 db.User.hasMany(db.History);
 db.History.belongsTo(db.User);
 
 db.User.hasMany(db.Favorite);
 db.Favorite.belongsTo(db.User);
+
+db.User.hasMany(db.Board);
+db.Board.belongsTo(db.User);
 
 module.exports = db;

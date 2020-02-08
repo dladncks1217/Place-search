@@ -138,6 +138,13 @@ if(document.getElementById('mypage')){
         location.href="/mypage";     
     });
 }
+// 게시판 라우터 이동
+if(document.getElementById('board')){
+    document.getElementById('board').addEventListener('click',(e)=>{
+        e.preventDefault();
+        location.href="/board";
+    });
+}
 
 // 즐겨찾기 추가/제거 기능
 if(document.getElementById('favoritebtn')){
