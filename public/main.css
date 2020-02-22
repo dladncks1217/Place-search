@@ -14,3 +14,21 @@
 #search{
     height:10%;
 }
+.posts{
+    border-color: darkgreen;
+    width:60%;
+    border-style: solid;
+    border-width: 2px;
+    padding: 12px; 
+    word-break: break-all;
+    font-size:30px;
+}
+.usernick{
+    margin-top:-14px;
+    margin-left:-14px;
+    margin-right:75%;
+    font-size:15px;
+}
+.posttime{
+    font-size:15px;
+}

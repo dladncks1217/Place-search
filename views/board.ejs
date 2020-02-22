@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <p><%= nick %> 님 안녕하세요!</p>
+        <input type="text" name="content" id="content">
+        <input type="button" id="submitbtn" value="게시">
+    <br><br>
+    <% for(let i = count;i>0;i--){%>
+        <div class="posts">
+            <fieldset class="usernick"><%= results.rows[i-1].dataValues.nick %></fieldset>
+            <p class="posttime"><%= results.rows[i-1].dataValues.post_date %></p>
+            <p><%= results.rows[i-1].dataValues.content %></p>
+        </div>
+    <% } %>    
+    <script src = "board.js"></script>
+</body>
+</html>

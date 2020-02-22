@@ -12,9 +12,10 @@
 <body>
 	<% if(isLoggedIn){ %>
 	<p id="nickp"><span id="nickname"><%= user %></span>님 안녕하세요!</p>
-	<button id="mypage">내 정보</button> <br>
-	<button id ="logout">로그아웃</button>
+	<button id="mypage">내 정보</button> 
 	<button id="board">자유게시판</button>
+	<br>
+	<button id ="logout">로그아웃</button>
 	<% }else{ %>
 		<button id = "login">로그인</button>
 		<button id = "join">회원가입</button>
@@ -26,13 +27,11 @@
 	<% if(isLoggedIn) { %>
 	<p id="search">검색결과 : <span id="srchresult"><%= searchnow %></span> </p>
 	<button id="favoritebtn"><%= starcheck %></button>
-
-		<% if(favoritecnt>0) { %>
-			<br><strong> 즐겨찾기: </strong>	
+	<br><strong> 즐겨찾기: </strong>
+		<% if(favoritecnt>0) { %>	
 			<% for(let i = favoritecnt; i>0 ; i--) { %>
 				<p class="favorites"><%= favoritelist.rows[i-1].dataValues.placeName %></p>
 			<% } %>
-			
 		<% } %>	
 
 	<% } else { %>
