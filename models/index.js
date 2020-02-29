@@ -22,7 +22,7 @@ db.History.belongsTo(db.User);
 db.User.hasMany(db.Favorite);
 db.Favorite.belongsTo(db.User);
 
-db.User.hasMany(db.Board);
-db.Board.belongsTo(db.User);
+db.User.hasMany(db.Board,{foreignKey:'id'});
+db.Board.belongsTo(db.User,{foreignKey:'userId'});
 
 module.exports = db;
