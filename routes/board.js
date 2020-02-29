@@ -6,13 +6,8 @@ const {Board,User} = require('../models');
 router.get('/', async(req,res,next)=>{
     try{
         Board.findAndCountAll({
-            include:[
-                {
-                    model:User,
-                    attributes:['nick']
-                }
-            ],
             where:{},
+            include:[User],
         })
         .then((results)=>{
             if(results.count === 0){
@@ -22,6 +17,7 @@ router.get('/', async(req,res,next)=>{
                     
                 });
             }else{
+                console.log(results.rows[0].user.dataValues.nick);
                 res.render('board',{
                     nick:req.user.nick,
                     count: results.count,
@@ -29,6 +25,7 @@ router.get('/', async(req,res,next)=>{
                 });
             }
         })
+        
         
     }catch(err){
         console.error(err);

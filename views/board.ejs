@@ -13,7 +13,7 @@
     <br><br>
     <% for(let i = count;i>0;i--){%>
         <div class="posts">
-            <fieldset class="usernick"><%= results.rows[i-1].dataValues.nick %></fieldset>
+            <fieldset class="usernick"><%= results.rows[i-1].user.dataValues.nick %></fieldset>
             <p class="posttime"><%= results.rows[i-1].dataValues.post_date %></p>
             <p><%= results.rows[i-1].dataValues.content %></p>
         </div>
