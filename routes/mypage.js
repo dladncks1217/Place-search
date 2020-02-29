@@ -18,7 +18,15 @@ router.get('/',isLoggedIn, (req,res,next)=>{
 });
 
 router.post('/changenick',isLoggedIn, async(req,res,next)=>{
-    await User.update({nick:req.body.nick},{where:{nick:req.body.firstnick}})
+    try{
+        await User.update({nick:req.body.nick},{where:{nick:req.body.firstnick}});
+        return(
+            res.status(200).redirect('/mypage')
+        )
+    }catch(err){
+        console.error(err);
+        next(err);
+    }
 });
 
 router.post('/changepw',isLoggedIn,async(req,res,next)=>{
